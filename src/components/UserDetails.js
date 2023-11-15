@@ -50,7 +50,7 @@ export default function UserDetails() {
         <table>
           <thead>
             <tr>
-              <th>id</th>
+              <th className="phone-number">>id</th>
               <th>userName</th>
               <th className="phone-number">phone</th>
               <th>emailId</th>
@@ -60,7 +60,7 @@ export default function UserDetails() {
           <tbody>
             {userData.map((user, index) => (
               <tr key={index} className="table-row">
-                <td>{index + 1}</td>
+                <td className="phone-number">>{index + 1}</td>
                 <td>{user.name}</td>
                 <td className="phone-number">{user.phoneNumber}</td>
                 <td>{user.email}</td>
