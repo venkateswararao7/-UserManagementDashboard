@@ -4,8 +4,7 @@ import HttpsOutlinedIcon from "@mui/icons-material/HttpsOutlined";
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import "../styles/AccoutCreation.css";
-import logo from "../logo.svg";
-import { auth, createUserWithEmailAndPassword } from "../firebase";
+
 
 const AccountCreation = () => {
   const [username, setUsername] = useState("");

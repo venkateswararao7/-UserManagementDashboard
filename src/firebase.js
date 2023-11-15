@@ -1,23 +1,18 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {
-  getAuth,
-  createUserWithEmailAndPassword as createUserWithEmailAndPasswordFirebase,
-} from "firebase/auth";
-import { getDatabase } from "firebase/database";
+import { getFirestore, collection, getDocs } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfOJQvkc_dK-0DQ0FeKPhiO-qtxKe0A-0",
-  authDomain: "dashboard-19acd.firebaseapp.com",
-  projectId: "dashboard-19acd",
-  storageBucket: "dashboard-19acd.appspot.com",
-  messagingSenderId: "104345654200",
-  appId: "1:104345654200:web:d17ff0fa6461c39b7d354d",
+  apiKey: "AIzaSyALDl0T6xtVD_OqUUgvcgqcH5TM1icqX1M",
+  authDomain: "usermanagementapp-f9c8a.firebaseapp.com",
+  projectId: "usermanagementapp-f9c8a",
+  storageBucket: "usermanagementapp-f9c8a.appspot.com",
+  messagingSenderId: "873613849408",
+  appId: "1:873613849408:web:55f0adf2579ebc43c940a5"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
+const firestore = getFirestore(app);
 
-const createUserWithEmailAndPassword = createUserWithEmailAndPasswordFirebase;
-
-export { auth, database, createUserWithEmailAndPassword };
+export { firestore, collection, getDocs };

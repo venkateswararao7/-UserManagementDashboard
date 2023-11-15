@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { firestore } from ".././firebase";
+import { addDoc, collection } from "@firebase/firestore";
+
 import "../styles/InformationForm.css";
 const InformationForm = () => {
     const [formData, setFormData] = useState({
@@ -11,14 +14,16 @@ const InformationForm = () => {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    //firebase collection creation
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+        const ref = collection(firestore, "UserData");
         // Update the creationDate field in formData with the current date and time
         const updatedFormData = {
             ...formData,
-            creationDate: getCurrentDateTime(),
+            creationDate: await getCurrentDateTime(),
         };
 
         // You can perform any actions with the updated form data here
@@ -26,12 +31,23 @@ const InformationForm = () => {
 
         // Update the state with the new formData
         setFormData(updatedFormData);
+        try {
+            addDoc(ref, updatedFormData)
+            console.log("try block", updatedFormData);
+        }
+        catch (e) {
+            console.log(e);
+        }
+
     };
 
     const getCurrentDateTime = () => {
         const currentDateTime = new Date();
-        return currentDateTime.toLocaleString();
+        const formattedDateTime = currentDateTime.toLocaleString();
+        console.log('Formatted DateTime:', formattedDateTime);
+        return formattedDateTime;
     };
+
 
     return (
         <div className='Information-form'>

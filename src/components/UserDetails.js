@@ -11,10 +11,7 @@ export default function App() {
     setSearchTerm(event.target.value);
   };
 
-  const handleUserClick = (user) => {
-    setSelectedUser(user);
-    setIsModalOpen(true);
-  };
+
 
   const handleCloseModal = () => {
     setSelectedUser(null);
