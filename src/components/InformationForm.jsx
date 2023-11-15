@@ -3,6 +3,7 @@ import { firestore } from ".././firebase";
 import { addDoc, collection } from "@firebase/firestore";
 
 import "../styles/InformationForm.css";
+
 const InformationForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -12,17 +13,18 @@ const InformationForm = () => {
     });
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        // Convert the name to lowercase before updating the state
+        setFormData({ ...formData, [e.target.name]: e.target.name === 'name' ? e.target.value.toLowerCase() : e.target.value });
     };
-    //firebase collection creation
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const ref = collection(firestore, "UserData");
+
         // Update the creationDate field in formData with the current date and time
         const updatedFormData = {
             ...formData,
+            name: formData.name.toLowerCase(), // Convert name to lowercase
             creationDate: await getCurrentDateTime(),
         };
 
@@ -31,14 +33,13 @@ const InformationForm = () => {
 
         // Update the state with the new formData
         setFormData(updatedFormData);
+
         try {
-            addDoc(ref, updatedFormData)
+            addDoc(ref, updatedFormData);
             console.log("try block", updatedFormData);
-        }
-        catch (e) {
+        } catch (e) {
             console.log(e);
         }
-
     };
 
     const getCurrentDateTime = () => {
@@ -48,7 +49,6 @@ const InformationForm = () => {
         return formattedDateTime;
     };
 
-
     return (
         <div className='Information-form'>
             <h2>Information Form</h2>
@@ -56,7 +56,6 @@ const InformationForm = () => {
                 <form onSubmit={handleSubmit}>
                     <label>
                         Name:
-
                         <input
                             type="text"
                             name="name"
