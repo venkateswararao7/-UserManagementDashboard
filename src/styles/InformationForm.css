@@ -1,0 +1,59 @@
+.Information-form {
+    width: 40%;
+    height: 60%;
+    margin: auto;
+}
+
+.Information-form h2 {
+    text-align: center;
+}
+
+.information {
+    margin: 3rem;
+}
+
+input {
+    display: block;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+input[type='text'] {
+    width: 90%;
+    height: 20px;
+    font-weight: 700;
+}
+
+input[type='email'] {
+    width: 90%;
+    height: 20px;
+    font-weight: 700;
+}
+
+input[type='tel'] {
+    width: 90%;
+    height: 20px;
+    font-weight: 700;
+}
+
+.info-submit {
+    width: 90%;
+}
+
+@media screen and (max-width:769px) {
+    .Information-form {
+        width: 90%;
+        height: 60%;
+    }
+
+    label {
+        font-size: 1.3rem;
+    }
+
+    .information {
+        margin: 0px;
+        margin-top: 1rem;
+    }
+}
